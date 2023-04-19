@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bluetooth/cubit/bluetooth_cubit.dart';
-import 'package:flutter_bluetooth/pages/home_page.dart';
+import 'package:flutter_bluetooth/pages/bluetooth_page.dart';
 
+import 'bloc/bluetooth_bloc.dart';
 import 'locator.dart';
 
 void main() async {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => locator<BluetoothCubit>()),
+        BlocProvider(create: (_) => locator<BluetoothBloc>()),
       ],
       child: MaterialApp(
           title: 'Flutter Bluetooth',
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.red,
           ),
-          home: const HomePage()),
+          home: const BluetoothPage()),
     );
   }
 }
